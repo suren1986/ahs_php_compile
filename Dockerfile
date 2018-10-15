@@ -1,5 +1,10 @@
 FROM php:7.1-fpm
 
+RUN echo 'deb http://mirrors.aliyun.com/debian/ stretch main non-free contrib' > /etc/apt/sources.list \ 
+    && echo 'deb http://mirrors.aliyun.com/debian/ stretch-proposed-updates main non-free contrib' >> /etc/apt/sources.list \    
+    && echo 'deb-src http://mirrors.aliyun.com/debian/ stretch main non-free contrib' >> /etc/apt/sources.list \ 
+    && echo 'deb-src http://mirrors.aliyun.com/debian/ stretch-proposed-updates main non-free contrib' >> /etc/apt/sources.list
+
 RUN apt-get update \
     && apt-get install -y nodejs \
     && apt-get install -y supervisor \
@@ -8,6 +13,7 @@ RUN apt-get update \
     && apt-get install -y zip \
     && apt-get install -y unzip \
     && apt-get install -y libpng-dev \
+    && apt-get install -y cron \
     && apt-get install -y vim
 
 RUN docker-php-ext-install pdo_mysql
