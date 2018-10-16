@@ -20,6 +20,7 @@ RUN docker-php-ext-install pdo_mysql
 RUN docker-php-ext-install opcache
 RUN docker-php-ext-install zip
 RUN docker-php-ext-install gd
+RUN docker-php-ext-install pcntl
 
 RUN ln -s /usr/bin/nodejs /usr/bin/node
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
